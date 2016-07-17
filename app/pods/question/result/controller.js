@@ -34,10 +34,6 @@ default Ember.Controller.extend(CommentAction, {
     }).create(),
     followaddress: null,
     answerstathistoryRaw: null,
-    historyEnabled:Ember.computed('answerstathistory', function(){
-        var answerstathistory = this.get('answerstathistory');
-        return answerstathistory.xaxis.length>=4;
-    }),
 
     summary: Ember.computed('optionStatRaw', function() {
         this.set("first", this.get('optionStatRaw').objectAt(0));
@@ -47,6 +43,7 @@ default Ember.Controller.extend(CommentAction, {
         for (var i = 0; i < sortedList.length; i++) {
             sortedList[i].set('option.color', Ember.colorList[i]);
             sortedList[i].set('option.index', i);
+            sortedList[i].set('option.percent', sortedList[i].get('percent'));
             votedOptions.push(sortedList[i].get('option'));
         }
         Ember.Logger.debug(votedOptions);
@@ -60,90 +57,5 @@ default Ember.Controller.extend(CommentAction, {
         }
 
         return sortedList;
-    }),
-    answerstathistory:Ember.computed('answerstathistoryRaw','percentageHistory', function(){
-        var xaxis = {};
-        var options = {};
-        let option;
-
-        var seriesList = this.get('answerstathistoryRaw');
-        var self = this;
-        seriesList.map(function(item) {
-            if (!xaxis[item.date]) {
-                xaxis[item.date] = {};
-            }
-            var value=item.count;
-            if(self.get('percentageHistory')){
-                value=item.percent;
-            }
-            xaxis[item.date][item.option] = value;
-            options[item.option] = value;
-        });
-        var optionsArray = [];
-        for (option in options) {
-            optionsArray.push({
-                option: option,
-                value: options[option]
-            });
-        }
-        optionsArray = optionsArray.sortBy('value').reverse();
-        var series = {};
-        optionsArray.map(function(item) {
-            series[item.option] = [];
-        });
-
-        var l = [];
-        for (var x in xaxis) {
-            var m=moment(x);
-            l.push(m.format('D. MMM'));
-            for (option in options) {
-                series[option].push(xaxis[x][option]);
-            }
-        }
-        var s = [];
-        optionsArray.map(function(item) {
-            s.push(series[item.option]);
-        });
-        var o = this.get('historyStatData');
-        o.set('xaxis',l);
-        o.set('series',s);
-        return o;
-    }),
-
-    actions: {
-        regionClicked: function(region) {
-            var self = this;
-            var locationP = App.getData('/regionresult', true, "GET", true, false, {
-                qid: this.get('question.id'),
-                country: region.region
-            }, null, null);
-            locationP.then(function(data) {
-                self.set('regionData', data);
-                self.set('zoomCountry', region.region);
-            });
-        },
-        backToRegion: function(){
-            this.set('regionMapData', this.get('regionDataBackup'));
-        },
-        subscribe: function() {
-        	let self=this;
-			var subscription = this.store.createRecord('subscription', {
-				question: this.get('question.id')
-            });
-            subscription.save().then(function(){
-            	self.set('question.subscribed',true);
-            	$('#modal1').closeModal();
-
-            }).catch(function(status){
-            	console.log('subscription error:'+status);
-            });
-        },
-        onReadyAction: function(){
-            Ember.$('ul.tabs').tabs();
-            Ember.Logger.debug('tabs are initialized');
-        },
-        togglePercentage: function(){
-            this.set('percentageHistory',!this.get('percentageHistory'));
-        }
-    }
+    })
 });

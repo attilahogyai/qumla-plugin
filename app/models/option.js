@@ -8,6 +8,7 @@ var model = DS.Model.extend({
 	ord: DS.attr('number'),
 	color: DS.attr('string'),
 	index: DS.attr('number'),
+	percent: DS.attr('number'),
 	isSelected: Ember.computed('answer',function(){
 		return this.get('answer')===this.get('id');
 	})

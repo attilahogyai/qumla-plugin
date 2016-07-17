@@ -3,7 +3,13 @@
 var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 module.exports = function(defaults) {
+
   var app = new EmberApp(defaults, {
+    sassOptions: {
+      includePaths: [
+        'bower_components/materialize/sass/'
+      ]
+    }
     // Add options here
   });
 
@@ -19,9 +25,9 @@ module.exports = function(defaults) {
   // modules that you would like to import into your application
   // please specify an object with the list of modules as keys
   // along with the exports of each module as its value.
-
+  //app.import('bower_components/chartist/dist/chartist.js');
   app.import('bower_components/moment/moment.js');
-  app.import('bower_components/materialize/dist/js/materialize.js');
+  //app.import('bower_components/materialize/dist/js/materialize.js');
   app.import('bower_components/fingerprintjs2/dist/fingerprint2.min.js');   
   return app.toTree();
 };

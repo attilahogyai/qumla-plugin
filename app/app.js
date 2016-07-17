@@ -11,6 +11,7 @@ window.App = Ember.Application.extend({
   Resolver
 });
 
+
 // Language functions
 
 App.lastLang='en';
@@ -71,6 +72,8 @@ App.getData = function(url,async,type,processdata,cache,data,success,error){
 	});
 }; 
 
+Ember.colorList=['#FF5722','#f4c63d','#d17905','#453d3f','#59922b','#0544d3',
+'#6b0392','#f05b4f','#dda458','#eacf7d','#86797d','#b2c326','#6188e2','#a748ca','#f05b4f']; 
 
 loadInitializers(App, config.modulePrefix);
 

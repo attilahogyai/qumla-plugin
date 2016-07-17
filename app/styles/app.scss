@@ -1,0 +1,41 @@
+@import "fonts";
+//@import "settings";
+//@import "materialize";
+//@import "chartist";
+//@import "mixins";
+//@import "awesomplete";
+
+//@import "page";
+
+/*stylesheet 2/2 | http://localhost:4200/assets/qumla-plugin.css*/
+body { margin: 0px; }
+a { background-color: transparent; }
+a:active,a:hover { outline: 0px; }
+html { box-sizing: border-box; }
+* { box-sizing: inherit; }
+a { color: #6ab7cb; text-decoration: none; -webkit-tap-highlight-color: transparent; }
+.card { box-shadow: rgba(0, 0, 0, 0.156863) 0px 2px 5px 0px, rgba(0, 0, 0, 0.117647) 0px 2px 10px 0px; }
+.collection { margin: 0.66667rem 0px 1.33333rem; border: 1px solid #e0e0e0; border-radius: 2px; overflow: hidden; position: relative; }
+.collection .collection-item { line-height: 1.5rem; padding: 10px 20px; margin: 0px; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #e0e0e0; background-color: #fff; }
+.collection .collection-item:last-child { border-bottom-style: none; }
+.collection a.collection-item { display: block; transition: 0.25s; color: #6ab7cb; }
+.collection a.collection-item:not(.active):hover { background-color: #ddd; }
+.container { margin: 0px auto; max-width: 1280px; width: 90%; }
+.container .row { margin-left: -1rem; margin-right: -1rem; }
+.row { margin-left: auto; margin-right: auto; margin-bottom: 20px; }
+.row::after { content: ""; display: table; clear: both; }
+.row .col { float: left; box-sizing: border-box; padding: 0px 1rem; }
+.row .col.s12 { width: 100%; margin-left: auto; left: auto; right: auto; }
+a { text-decoration: none; }
+html { line-height: 1.5; font-family: Roboto, sans-serif; font-weight: normal; color: #888; }
+.card { position: relative;transition: box-shadow 0.25s; border-radius: 2px; background-color: #fff; }
+.card .card-content { padding: 20px; border-radius: 0px 0px 2px 2px; }
+.card { box-shadow: rgba(0, 0, 0, 0.117647) 1px 1px 1px 0px; }
+body { padding-top: 0px; background-color: #fafafa; }
+.container { margin: 0px auto; max-width: 1280px; width: 95%; }
+.vote-title { color: #ff5722; font-size: 1.5em; font-weight: 400; padding: 0px 0px 0.5em 0em; display: block; }
+.container { max-width: 820px; }
+.qplugin .collection { margin-top: 0px; }
+
+
+

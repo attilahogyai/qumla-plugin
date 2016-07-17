@@ -1,0 +1,35 @@
+<div class="row qplugin">
+<div class="col s12">
+<div class="card-content">
+<span class="vote-title">
+{{question.title}}
+</span>
+{{#if summary}}
+	<div class="collection">
+		{{#each question.sortedOptions as |option| }}
+		<div style="position:relative">
+		<div style="position:absolute;left:0;top:0;-webkit-transition: width 0.5s ease-in;-moz-transition: width 0.5s ease-in;-ms-transition: width 0.5s ease-in;-o-transition: width 0.5s ease-in;transition:width 0.5s ease-in;background-color:{{option.color}}; width:{{if enableEffect option.percent '0px'}};height:100%">
+		</div>		
+		<span href="#!" style="display:block; position:relative;left:0;top:0;background-color:rgba(255,255,255,0.7)" class="collection-item {{option.style}}">
+			{{option.text}} 
+		</span>
+		<span style="display:block;position:absolute;right:0px;top:0px;" class="collection-item {{option.style}}">
+		{{option.percent}}
+		</span>		
+
+		</div>
+		{{/each}}
+
+	</div> 	
+{{else}}
+	<div class="collection" style="min-width:300px;">
+		{{#each question.sortedOptions as |option| }}
+		<a href="#!" class="collection-item {{option.style}} {{if option.isSelected 'active'}}" {{action 'selectAnswer' option}}>
+			{{option.text}} {{option.percent}}
+		</a>
+		{{/each}}
+	</div> 	
+{{/if}}
+</div>
+</div>
+</div>

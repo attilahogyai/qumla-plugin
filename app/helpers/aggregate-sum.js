@@ -24,7 +24,8 @@ export function aggregateSum(collection, groupField, sumField){
   	result.forEach(function(stat) {
   		var totalSum=stat.get("total");
   		var percent=Math.floor((stat.get(sumField)*10000/totalSum))/100;
-  		stat.set("percent",percent);
+
+  		stat.set("percent",Math.round(percent) + '%');
   		//stat.set("total",totalSum);
   	});
   	return result;

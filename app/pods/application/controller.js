@@ -8,6 +8,8 @@ export default Ember.Controller.extend({
     username: Ember.computed.readOnly('session.username'),        
     modal: Ember.inject.service(),
 
+    hideContent: false,
+
     showModal: Ember.computed.alias('modal.showModal'),
     modalName: Ember.computed.readOnly('modal.modalName'),
     modalModel: Ember.computed.readOnly('modal.modalModel'),

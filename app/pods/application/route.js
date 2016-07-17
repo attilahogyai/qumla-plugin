@@ -53,6 +53,14 @@ export default Ember.Route.extend(QuestionActions,{
             }
           }, 1000);
         });
+      },
+      resultDisplayed: function(){ // triggred by by plugin after displaying the result screen
+        //window.parent.qumla.close();
+      },
+      htmlInserted: function(){ // triggered by plugin when it was inserted
+        var h=window.document.getElementsByTagName('html')[0].offsetHeight;
+        console.log('plugin height:'+h);
+        window.parent.qumla.open(h);
       }
     }
  });
